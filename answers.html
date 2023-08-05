@@ -1,0 +1,231 @@
+<html lang="en">
+<head>
+  <title>Counter Portal</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="in_sty.css">
+   <scrip src="ans_scp.js">
+    <style>
+        .content {
+            display: none; /* Initially hide the content */
+        }
+        .content:target {
+            display: block;
+        }
+    </style>
+   </scrip>
+</head>
+<body id="clr">
+        <div class="container" id = "mar">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#content1" id="mcq">MCQ</a></li>
+                    <li id="limar"><a href="#content2" id="auto">Automata</a></li>
+                    <li id="limar"><a href="#content3" id="cod">COD</a></li>
+                  </ul>
+                </div>
+              </nav>
+              <br>
+              <br>
+        </div>
+     <div class="container-fluid"  id="clr show">
+            <div class="content" id="content1">
+                <pre id="clr">
+                   1. What is the output of the code given below?
+                    #include <stdio.h>
+                        int main()
+                        {
+                            int ary[4] = {1, 2, 3, 4};
+                            int *p = ary + 3;
+                            printf("%d %d\n", p[-2], ary[*p]);
+                        }
+
+                    2 3
+                    
+                    Compile time error
+                    
+                    2 4
+                    
+                    2 someGarbageValue       ~~
+                        
+                </pre>
+            </div>
+            <div class="content" id="content2">
+                <pre id = "clr">
+                   1. Write a program to concatenate two arrays using pointers.
+                    Input format :
+                    
+                    The first line of input is the size of the first array.
+                    
+                    The second line consists of the elements of the first array.
+                    
+                    The third line is the size of the second array.
+                    
+                    The last line consists of the elements of the second array.
+                    Output format :
+                    
+                    The output displays the concatenated array of elements.
+                    
+                    Refer to the sample output for specifications.
+                    Code constraints :
+                    
+                    Array size <=50
+                    Sample test cases :
+                    Input 1 :
+                    
+                    5
+                    1 2 3 4 5
+                    5
+                    6 7 8 9 10
+                    
+                    Output 1 :
+                    
+                    1  2  3  4  5  6  7  8  9  10  
+                    
+                    Input 2 :
+                    
+                    5
+                    10 24 36 47 53
+                    4
+                    62 78 86 91
+                    
+                    Output 2 :
+                    
+                    10  24  36  47  53  62  78  86  91  
+                    
+                    Whitelist
+                    Set 1:
+                    * 
+                    <h4>Answer</h4>
+                    #include<stdio.h>
+                        #include<stdlib.h>
+                        int main()
+                         
+                        {
+                            int n1, n2, i, j, *p, *q, a[50], b[50];
+                            scanf("%d", &n1);
+                            for(i = 0; i < n1; i++)
+                            {
+                                scanf("%d", &a[i]);
+                            }
+                            scanf("%d", &n2);
+                            for(i = 0; i < n2; i++)
+                            {
+                                scanf("%d", &b[i]);
+                            }
+                            p=a;
+                            q=b;
+                            for(i = 0, j = n1; i < n2; i++, j++)
+                            {
+                                *(p+j) = *(q+i);
+                            }
+                            for(i = 0; i < j; i++)
+                                printf("%d  ", a[i]);
+                         
+                            return 0;
+                         
+                        }
+                </pre>
+            </div>
+            <div class="content" id="content3">
+                <pre id="clr">
+                   1. Write a program to swap two arrays using pointers.
+                    Input format :
+                    
+                    The first line of the input is the size of both arrays.
+                    
+                    The next input is the elements of the first array and second array in a separate line.
+                    Output format :
+                    
+                    The output prints the arrays after swapping.
+                    
+                    Refer to the sample output for specifications.
+                    Code constraints :
+                    
+                    Array size <=100
+                    Sample test cases :
+                    Input 1 :
+                    
+                    5
+                    10 20 30 40 50
+                    100 200 300 400 500
+                    
+                    Output 1 :
+                    
+                    100 200 300 400 500 
+                    10 20 30 40 50 
+                    
+                    Input 2 :
+                    
+                    6
+                    -1 -2 -3 -4 -5 -6
+                    1 1 1 1 1 1
+                    
+                    Output 2 :
+                    
+                    1 1 1 1 1 1 
+                    -1 -2 -3 -4 -5 -6 
+                    
+                    Whitelist
+                    Set 1:
+                    * 
+                    <h4>Answer</h4>
+                    #include <stdio.h>
+                        #define MAX_SIZE 100
+                        void inputArray(int *arr, int size);
+                        void printArray(int *arr, int size);
+                        void swapArray(int *sourceArr, int *destArr, int size);
+                        int main()
+                        {
+                            int sourceArr[MAX_SIZE];
+                            int destArr[MAX_SIZE];
+                            int size;
+                            scanf("%d", &size);
+                            inputArray(sourceArr, size);
+                            inputArray(destArr, size);
+                            swapArray(sourceArr, destArr, size);
+                            printArray(sourceArr, size);
+                            printArray(destArr, size);
+                            return 0;
+                        }
+                        void inputArray(int *arr, int size)
+                        {
+                            int *arrEnd = (arr + (size - 1));
+                            while(arr <= arrEnd)
+                                scanf("%d", arr++);
+                        }
+                        void printArray(int *arr, int size)
+                        {
+                            int *arrEnd = (arr + (size - 1));
+                            while(arr <= arrEnd)
+                                printf("%d ", *(arr++));
+                                printf("\n");
+                        }
+                        void swapArray(int * sourceArr, int * destArr, int size)
+                        {
+                            int * sourceArrEnd = (sourceArr + (size - 1));
+                            int * destArrEnd   = (destArr + (size - 1));
+                            while(sourceArr <= sourceArrEnd && destArr <= destArrEnd)
+                            {
+                                *sourceArr ^= *destArr;
+                                *destArr   ^= *sourceArr;
+                                *sourceArr ^= *destArr;
+                        
+                                
+                                sourceArr++;
+                        
+                                
+                                destArr++;
+                            }
+                        }    
+                </pre>
+            </div>
+     </div>
+
+      
+</body>
+</html>
